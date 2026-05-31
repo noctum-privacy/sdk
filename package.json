@@ -1,0 +1,61 @@
+{
+  "name": "@noctum/sdk",
+  "version": "1.0.0",
+  "description": "TypeScript SDK for the Noctum Protocol — anonymous ETH transfers, ZK identity proofs, and wallet security on Base L2",
+  "keywords": [
+    "noctum",
+    "privacy",
+    "zk",
+    "zero-knowledge",
+    "base",
+    "ethereum",
+    "l2",
+    "anonymous"
+  ],
+  "homepage": "https://noctum.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noctum-privacy/sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/noctum-privacy/sdk/issues"
+  },
+  "license": "MIT",
+  "author": "Noctum Protocol <dev@noctum.io>",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean --no-splitting",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "*"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
